@@ -1,0 +1,14 @@
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\obj\Debug\netcoreapp2.1\MRPSystemBackend.csproj.CoreCompileInputs.cache
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\obj\Debug\netcoreapp2.1\MRPSystemBackend.RazorAssemblyInfo.cache
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\obj\Debug\netcoreapp2.1\MRPSystemBackend.RazorAssemblyInfo.cs
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\obj\Debug\netcoreapp2.1\MRPSystemBackend.AssemblyInfoInputs.cache
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\obj\Debug\netcoreapp2.1\MRPSystemBackend.AssemblyInfo.cs
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\bin\Debug\netcoreapp2.1\MRPSystemBackend.deps.json
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\bin\Debug\netcoreapp2.1\MRPSystemBackend.runtimeconfig.json
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\bin\Debug\netcoreapp2.1\MRPSystemBackend.runtimeconfig.dev.json
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\bin\Debug\netcoreapp2.1\MRPSystemBackend.dll
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\bin\Debug\netcoreapp2.1\MRPSystemBackend.pdb
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\obj\Debug\netcoreapp2.1\MRPSystemBackend.RazorTargetAssemblyInfo.cache
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\obj\Debug\netcoreapp2.1\MRPSystemBackend.dll
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\obj\Debug\netcoreapp2.1\MRPSystemBackend.pdb
+D:\Development\MRP System\Core System\Backend\MRPSystemBackend\MRPSystemBackend\obj\Debug\netcoreapp2.1\MRPSystemBackend.csprojAssemblyReference.cache
