@@ -12,7 +12,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MRPSystemBackend.API.Common;
+using MRPSystemBackend.API.LifeAssure;
+using MRPSystemBackend.API.Main;
 using MRPSystemBackend.API.User;
+using Newtonsoft.Json.Serialization;
 
 namespace MRPSystemBackend
 {
@@ -30,7 +34,9 @@ namespace MRPSystemBackend
         {
             services.AddSingleton<IConfiguration>(Configuration);
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+               .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver()); //To disable auto camel casing
 
             services.AddMvc(config =>
             {
@@ -47,6 +53,10 @@ namespace MRPSystemBackend
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAssureRepository, AssureRepository>();
+            services.AddScoped<IMainRepository, MainRepository>();
+            services.AddScoped<ICommonRepository, CommonRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

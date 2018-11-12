@@ -11,7 +11,7 @@ namespace MRPSystemBackend.API.User
         private List<User> _users = new List<User>
         {
             new User { UserName = "Test", Company = "Life", Password = "test" },
-             new User { UserName = "tda", Company = "General",  Password = "tda" }
+             new User { UserName = "tda", Company = "Life",  Password = "tda" }
 
         };
 
