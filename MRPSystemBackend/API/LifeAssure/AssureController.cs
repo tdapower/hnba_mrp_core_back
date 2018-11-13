@@ -24,7 +24,7 @@ namespace MRPSystemBackend.API.LifeAssure
 
         // GET: api/Assure
         [HttpGet]
-        [Route("GetAssureList")]
+        [Route("GetCustomerList")]
         public IActionResult Get()
         {
             var result = assureRepository.GetAssures();
@@ -35,10 +35,34 @@ namespace MRPSystemBackend.API.LifeAssure
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("GetCustomer/{assureId}")]
+        public IActionResult GetAssure(int assureId)
+        {
+            var result = assureRepository.GetAssureById(assureId);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("SearchCustomer")]
+        public IActionResult SearchAssures([FromBody] SearchAssure searchAssure)
+        {
+            var result = assureRepository.SearchAssures(searchAssure);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+
 
         [HttpPost]
         [Route("AddCustomer")]
-        public IActionResult AddCustomer([FromBody] Assure assure)
+        public IActionResult AddAssure([FromBody] Assure assure)
         {
             if (!ModelState.IsValid)
             {
@@ -53,6 +77,23 @@ namespace MRPSystemBackend.API.LifeAssure
             return Ok(result);
         }
 
+
+        [HttpPut]
+        [Route("UpdateCustomer")]
+        public IActionResult UpdateAssure([FromBody] Assure assure)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = assureRepository.UpdateAssure(assure);
+            if (result == 0)
+            {
+                return BadRequest();
+            }
+            return Ok(result);
+        }
 
 
     }

@@ -129,7 +129,40 @@ namespace MRPSystemBackend.API.LifeAssure
 
         public Assure GetAssureById(int assureId)
         {
-            throw new NotImplementedException();
+            Assure result = null;
+          
+
+            try
+            {
+                var dyParam = new OracleDynamicParameters();
+                dyParam.Add("IPAssureId", OracleDbType.Int32, ParameterDirection.Input, assureId);
+                dyParam.Add("OPAssureCursor", OracleDbType.RefCursor, ParameterDirection.Output);
+
+
+
+                var conn = this.GetConnection();
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    var query = "MRPSGetAssureByID";
+
+                    result = SqlMapper.QueryFirst<Assure>(conn, query, param: dyParam, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+
+
+
+
         }
 
         public IEnumerable<Assure> GetAssures()
@@ -161,9 +194,92 @@ namespace MRPSystemBackend.API.LifeAssure
             return result;
         }
 
-        public void UpdateAssure(Assure assure)
+
+        public IEnumerable<Assure> SearchAssures(SearchAssure searchAssure)
         {
-            throw new NotImplementedException();
+            IEnumerable<Assure> result = null;
+            try
+            {
+                var dyParam = new OracleDynamicParameters();
+                dyParam.Add("IPName", OracleDbType.Varchar2, ParameterDirection.Input, searchAssure.Name);
+                dyParam.Add("IPNIC", OracleDbType.Varchar2, ParameterDirection.Input, searchAssure.NIC);
+                dyParam.Add("IPAddress", OracleDbType.Varchar2, ParameterDirection.Input, searchAssure.Address);
+
+
+                dyParam.Add("OPAssureCursor", OracleDbType.RefCursor, ParameterDirection.Output);
+
+                var conn = this.GetConnection();
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    var query = "MRPSSearchAssures";
+
+                    result = SqlMapper.Query<Assure>(conn, query, param: dyParam, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public int UpdateAssure(Assure assure)
+        {
+            int result = 0;
+            try
+            {
+                var conn = this.GetConnection();
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                var parameters = new DynamicParameters();
+                parameters.Add("IPSeqId", assure.SeqId);
+                parameters.Add("IPAssureType", assure.AssureType);
+                parameters.Add("IPName", assure.Name);
+                parameters.Add("IPDOB", assure.DOB);
+                parameters.Add("IPAge", assure.Age);
+                parameters.Add("IPGender", assure.Gender);
+                parameters.Add("IPNIC", assure.NIC);
+                parameters.Add("IPNationalityId", assure.NationalityId);
+                parameters.Add("IPOccupation", assure.Occupation);
+                parameters.Add("IPContactNo", assure.ContactNo);
+                parameters.Add("IPEmail", assure.Email);
+                parameters.Add("IPAddress", assure.Address);
+                parameters.Add("IPHeightCm", assure.HeightCm);
+                parameters.Add("IPHeightInch", assure.HeightInch);
+                parameters.Add("IPWeightKg", assure.WeightKg);
+                parameters.Add("IPWeightLbs", assure.WeightLbs);
+                parameters.Add("IPBMI", assure.BMI);
+                parameters.Add("IPPreviousPolicyAmount", assure.PreviousPolicyAmount);
+                parameters.Add("IPIsAgeAdmitted", assure.IsAgeAdmitted);
+                parameters.Add("IPIsSmoker", assure.IsSmoker);
+                parameters.Add("IPIsFemaleRebate", assure.IsFemaleRebate);
+                parameters.Add("IPIsVIP", assure.IsVIP);
+
+                
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Execute("UpdateMRPSAssure", parameters, commandType: CommandType.StoredProcedure);
+
+                    result = 1;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
         }
 
 
@@ -174,5 +290,6 @@ namespace MRPSystemBackend.API.LifeAssure
             return conn;
         }
 
+      
     }
 }

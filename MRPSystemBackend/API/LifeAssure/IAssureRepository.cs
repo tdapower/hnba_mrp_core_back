@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace MRPSystemBackend.API.LifeAssure
 {
-   public interface IAssureRepository
+    public interface IAssureRepository
     {
         IEnumerable<Assure> GetAssures();
-
+        IEnumerable<Assure> SearchAssures(SearchAssure searchAssure);
         Assure GetAssureById(int assureId);
 
         int AddAssure(Assure assure);
         int AddAssureWithTransaction(Assure assure, IDbConnection connection);
-        void UpdateAssure(Assure assure);
+        int UpdateAssure(Assure assure);
+
+
+
     }
 }
